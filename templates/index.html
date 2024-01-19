@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato Restaurant Ratings Predictor</title>
+
+    <!-- External Stylesheets -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Pacifico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Arimo">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Hind:300">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- Internal Styles -->
+    <style>
+        body {
+            font-family: 'Arimo', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url("https://images.pexels.com/photos/952356/pexels-photo-952356.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .logo {
+            width: 10%;
+            max-width: 100px;
+            margin-bottom: 0px;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+            border: none;
+            border-radius: 5px;
+            background-color: #4CAF50;
+            color: white;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img class="logo" src="https://logos-world.net/wp-content/uploads/2020/11/Zomato-Emblem.jpg" alt="Zomato Restaurant Image">
+
+        <h1 style="font-family: 'Pacifico', cursive;">Predict Zomato Restaurant Ratings</h1>
+
+        <form action="{{ url_for('predict') }}" method="post">
+            <input type="text" name="Online Order" placeholder="Order Online" required>
+            <input type="text" name="Book Table" placeholder="Book Table" required>
+            <input type="text" name="Votes" placeholder="Votes" required>
+            <input type="text" name="Location" placeholder="Location" required>
+            <input type="text" name="Restaurant Type" placeholder="Restaurant Type" required>
+            <input type="text" name="Cuisines" placeholder="Cuisines" required>
+            <input type="text" name="Cost" placeholder="Cost" required>
+            <input type="text" name="Menu Item" placeholder="Menu Item" required>
+            <button type="submit">Predict</button>
+        </form>
+
+        <br>
+        <br>
+        {{ prediction_text }}
+    </div>
+</body>
+
+</html>
